@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft of Bengal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Catamaran:wght@200&family=Courgette&family=Edu+TAS+Beginner:wght@700&family=Lato:wght@300;900&family=Mukta:wght@700&family=Mulish:wght@300&family=Open+Sans&family=PT+Sans:ital,wght@1,700&family=Poppins:wght@300&family=Raleway:wght@100&family=Roboto&family=Roboto+Condensed:wght@700&family=Roboto+Slab&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <h1 style="font-family:Geneva, Tahoma, sans-serif">Craft of
+                    Bengal</h1>
+            </div>
+            <div id="change_1">
+                <div class="options_menu">
+                    <div class="options">
+                        <h4><a href="{% url 'index:index' %}">HOME</a></h4>
+
+                    </div>
+                    <div class="options">
+                        <select name="categories" id="Category" onchange="location = this.value;">
+                            <option value="" disabled selected style="font-size: medium;">Categories</option>
+                            <option value="{% url 'products:santiniketan' %}">Shantiniketan Leather Goods</option>
+                            <option value="{% url 'products:kathi' %}">Madur Kathi</option>
+                            <option value="{% url 'products:baluchari' %}">Baluchuri Saree</option>
+                            <option value="{% url 'products:chhou' %}">Purulia Chhau Mask</option>
+                            <option value="{% url 'products:santipur' %}">Santipur Saree</option>
+                            <option value="{% url 'products:teracotta' %}">Bankura Terracotta Horse</option>
+                        </select>
+
+                    </div>
+
+                    <div class="options">
+                        <h4><a onclick="blog()" id="blogs" href="#blog">Blogs</a></h4>
+                    </div>
+                    <div class="options">
+                        <h4><a onclick="contact()" id="contacts" href="#contact">CONTACT US</a></h4>
+                    </div>
+
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div class="cart">
+                        <i id="cartIcon" class="fa-solid fa-shopping-cart"></i>
+                        <p id="cartNum">0</p>
+                    </div>
+                    <div class="cartItems"> </div>
+                    <div class="login_button">
+                        
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'login:logout' %}"><button id="login">Logout</button></a>
+                            {% else%}
+                            <a href="{% url 'login:user_login' %}"><button id="login">Login</button></a>
+                            {% endif %}
+                        
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="log">
+        <input id="logName" type="text" placeholder="Enter Email">
+        <input type="password" placeholder="Enter Password"><br>
+        <button id="btn">Log In</button>
+
+    </div>
+    {% block body_block %}
+    <div class="main">
+        <div class="text">
+            <h1>Great Deals Exciting Offers</h1>
+            <h3>Save Upto 30% Off</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing Molestiae
+                molestias reprehenderit reet
+                <br>reprehenderit reiciendiset sit amet Molestiae molestias
+                reiciendiset
+            </p>
+            <button>Explore</button>
+        </div>
+    </div>
+
+    <div class="women" id="cloth">
+        <div class="head">
+            <h1>Trending <span>Women Tant Sarees</span></h1>
+        </div>
+
+        <div class="shop">
+            <div class="card">
+                <a href="../PRODUCT_DETAILS_PAGE/product_details.html"><img src="trend_saree1.webp" alt></a>
+                <div class="cardText">
+                    <p>Trending Tant Sarees</p>
+                    <h3>Rs. 468</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree2.webp" alt>
+                <div class="cardText">
+                    <p>Trending Tant Sarees</p>
+                    <h3>Rs. 468</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree3.webp" alt>
+                <div class="cardText">
+                    <p>Trending Tant Sarees</p>
+                    <h3>Rs. 468</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="women" id="cloth">
+        <div class="head">
+            <h1>Trending <span>Women Baluchuri Sarees</span></h1>
+        </div>
+
+        <div class="shop">
+            <div class="card">
+                <img src="trend_saree4.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree5.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree6.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="women" id="cloth">
+        <div class="head">
+            <h1>Trending <span>Women Baluchuri Sarees</span></h1>
+        </div>
+
+        <div class="shop">
+            <div class="card">
+                <img src="trend_saree4.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree5.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree6.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="women" id="cloth">
+        <div class="head">
+            <h1>Trending <span>Women Baluchuri Sarees</span></h1>
+        </div>
+
+        <div class="shop">
+            <div class="card">
+                <img src="trend_saree4.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree5.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="trend_saree6.webp" alt>
+                <div class="cardText">
+                    <p>Trending Baluchuri Saree</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="women" id="cloth">
+        <div class="head">
+            <h1>Trending <span>Women T-Shirt</span></h1>
+        </div>
+
+        <div class="shop">
+            <div class="card">
+                <img src="g1.webp" alt>
+                <div class="cardText">
+                    <p>Trending T-Shirts</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="g4.webp" alt>
+                <div class="cardText">
+                    <p>Trending T-Shirts</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="g3.webp" alt>
+                <div class="cardText">
+                    <p>Trending T-Shirts</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="women" id="cloth">
+        <div class="head">
+            <h1>Trending <span>Men's T-Shirt</span></h1>
+        </div>
+
+        <div class="shop">
+            <div class="card">
+                <img src="M1.webp" alt>
+                <div class="cardText">
+                    <p>Trending T-Shirts</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="M2.webp" alt>
+                <div class="cardText">
+                    <p>Trending T-Shirts</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="M3.webp" alt>
+                <div class="cardText">
+                    <p>Trending T-Shirts</p>
+                    <h3>$10</h3>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- blogs -->
+
+    <div class="trend" id="blog">
+        <div class="head">
+            <h1>Read <span>Blogs</span></h1>
+        </div>
+        <div class="trending">
+            <div class="trendCard">
+                <img src="trend1.webp" alt>
+                <div class="trendText">
+                    <h2>Girl's Trending Tops</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Aspernatur, aliquam sit.</p>
+                    <a href="https://www.faballey.com/blog">Read More</a>
+                </div>
+            </div>
+            <div class="trendCard">
+                <img src="trend2.webp" alt>
+                <div class="trendText">
+                    <h2>Bous Trending T-Shirt</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Aspernatur, aliquam sit.</p>
+                    <a href="https://www.apetogentleman.com/">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- review -->
+    <div class="blog" id="review">
+        <div class="head">
+            <h1>Customer <span>Review</span></h1>
+        </div>
+        <div class="read">
+            <div class="readBlog">
+                <img src="r1.jpg" alt>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Recusandae odio qui cumque quisquam omnis fuga inventore
+                    quasi ipsam. </p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="readBlog">
+                <img src="r2.jpg" alt>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Recusandae odio qui cumque quisquam omnis fuga inventore
+                    quasi ipsam. </p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="readBlog">
+                <img src="r3.jpg" alt>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Recusandae odio qui cumque quisquam omnis fuga inventore
+                    quasi ipsam. </p>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+{% endblock %}
+<footer>
+    <div class="foot-panel1">
+        <button>Back to Top</button>
+    </div>
+    <div class="foot-panel2">
+        <div>
+            <p><b>Get to Know Us</b></p>
+            <a>Careers</a>
+            <br>
+            <a>Blog</a>
+            <br>
+            <a>About Craft of Bengal</a>
+        </div>
+        <div>
+            <p><b>Make Money with Us</b></p>
+            <a>Sell products on Craft of Bengal </a>
+            <br>
+            <a>Advertise Your Products</a>
+            <br>
+            <a>Self-Publish with Us</a>
+            <br>
+            <a>See More Make Money with Us</a>
+        </div>
+        <div>
+            <p><b>Craft of Bengal Business Card</b></p>
+            <a>Shop with Points</a>
+            <br>
+            <a>Reload Your Balance</a>
+        </div>
+        <div>
+            <p><b>Let Us Help You</b></p>
+            <a>Your Account</a>
+            <br>
+            <a>Your Order</a>
+            <br>
+            <a>Shipping Rates & Policies </a>
+            <br>
+            <a>Return & Replacements</a>
+            <br>
+            <a>Manage Your Content and Devices</a>
+            <br>
+            <a>Craft of Bengal Assistant</a>
+            <br>
+            <a>Help</a>
+        </div>
+    </div>
+    <div class="foot-panel3">
+        <div class="pages">
+            <a>Conditions of Use</a>
+            <a>Privacy Notice</a>
+            <a>Your Ads Privacy Choices</a>
+        </div>
+        <div class="copyright">
+            &copy; 1996-2023, Craft_of_Bengal.com, Inc. or its affiliates
+        </div>
+    </div>
+</footer>
+<script src="{% static 'js/index.js' %}"></script>
+
+</html>

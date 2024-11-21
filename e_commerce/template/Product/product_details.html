@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'Home/index.html' %}
+{% block body_block %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/product_details_style.css'%}">
+    <title>Product Name</title>
+</head>
+
+<body>
+    
+    <div class="main_container">
+        <div class="sub_container">
+            <div class="product_image">
+                <div class="slider">
+                    <div class="slides">
+                        <!-- <img src="gallery/saree_view_0.jpg" alt="Product Image 1">
+                        <img src="gallery/saree_view_1.avif" alt="Product Image 2">
+                        <img src="gallery/saree_view_0.jpg" alt="Product Image 3"> -->
+                        <img src="{{products.product_image.url}}" alt="Product Image 1">
+                        <img src="{{products.product_image.url}}" alt="Product Image 2">
+                        <img src="{{products.product_image.url}}" alt="Product Image 3">
+                    </div>
+                    <button class="prev" onclick="prevSlide()">❮</button>
+                    <button class="next" onclick="nextSlide()">❯</button>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <h5>Mini Description Or Anything</h5>
+                </div>
+            </div>
+            <div class="product_details">
+
+                <div class="product_name" style="padding: 10px;">
+                    <h6>Home / {{products.product_type}} / {{products.product_name}}</h6>
+                    <h2>{{products.product_name}}</h2>
+                    <h3>₹ {{products.product_price}}</h3>
+                </div>
+                <div class="product_description" style="padding: 10px;">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo numquam laborum placeat ratione
+                        eligendi, vero fuga unde praesentium odit eveniet. Laudantium consectetur architecto eligendi
+                        cumque
+                        nemo tempora beatae, fuga explicabo.
+                    </p>
+                </div>
+                <div class="buttons" style="display: flex;">
+                    <div class="buy_now_button" id="button_on_page">
+                        <a href="yourcart.html"><button type="button">Buy Now</button></a>
+                    </div>
+                    <div class="add_to_cart_button">
+                        <button type="button" id="openBtn">Add</button>
+                    </div>
+
+                    <div class="side-panel" id="sidePanel">
+                        <div class="panel-content">
+                            <div style="display: flex; justify-content: center;">
+                                <h3>Your Cart</h3>
+                                <button id="closeBtn">Close</button>
+                            </div>
+                            <div class="cart-products-list" style="margin: 5px; padding: 5px;">
+                                <div class="cart-product" style="display: flex;">
+                                    <div class="cart-product-image">
+                                        <img src="gallery/saree_pov_1.jpg" alt="" srcset="">
+                                    </div>
+                                    <div class="cart-product-details">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <h3>Product Name</h3>
+                                            <div class="delete-product">
+                                                <button type="button">delete</button>
+                                            </div>
+
+                                        </div>
+
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <div class="quantity-box" style="height: fit-content;">
+                                                <button class="subtract-btn">-</button>
+                                                <input type="text" class="quantity-input" value="1" readonly>
+                                                <button class="add-btn">+</button>
+                                            </div>
+                                            <div class="price-update">
+                                                <ph5>₹ 105.00</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="cart-product" style="display: flex;">
+                                    <div class="cart-product-image">
+                                        <img src="gallery/saree_pov_2.jpg" alt="" srcset="">
+                                    </div>
+                                    <div class="cart-product-details">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <h3>Product Name</h3>
+                                            <div class="delete-product">
+                                                <button type="button">delete</button>
+                                            </div>
+
+                                        </div>
+
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <div class="quantity-box" style="height: fit-content;">
+                                                <button class="subtract-btn">-</button>
+                                                <input type="text" class="quantity-input" value="1" readonly>
+                                                <button class="add-btn">+</button>
+                                            </div>
+                                            <div class="price-update">
+                                                <ph5>₹ 105.00</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="cart-product" style="display: flex;">
+                                    <div class="cart-product-image">
+                                        <img src="gallery/saree_pov_3.jpg" alt="" srcset="">
+                                    </div>
+                                    <div class="cart-product-details">
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <h3>Product Name</h3>
+                                            <div class="delete-product">
+                                                <button type="button">delete</button>
+                                            </div>
+
+                                        </div>
+
+                                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <div class="quantity-box" style="height: fit-content;">
+                                                <button class="subtract-btn">-</button>
+                                                <input type="text" class="quantity-input" value="1" readonly>
+                                                <button class="add-btn">+</button>
+                                            </div>
+                                            <div class="price-update">
+                                                <ph5>₹ 105.00</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="overlay" id="overlay"></div>
+                </div>
+                <div class="review-container">
+                    <div class="review-sub-container">
+                        <div class="scrollable-div">
+                            <div class="review">
+                                <h3>User 1 Review</h3>
+                                <div class="user-comment">
+                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
+                                        magna mollis."</p>
+                                    <div class="rating">
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review">
+                                <h3>User 2 Review</h3>
+                                <div class="user-comment">
+                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
+                                        magna mollis."</p>
+                                    <div class="rating">
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review">
+                                <h3>User 3 Review</h3>
+                                <div class="user-comment">
+                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
+                                        magna mollis."</p>
+                                    <div class="rating">
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review">
+                                <h3>User 4 Review</h3>
+                                <div class="user-comment">
+                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
+                                        magna mollis."</p>
+                                    <div class="rating">
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review">
+                                <h3>User 5 Review</h3>
+                                <div class="user-comment">
+                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
+                                        magna mollis."</p>
+                                    <div class="rating">
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9733;</span>
+                                        <span class="star">&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="similar-products-list">
+                <div class="similar-products-container" style="overflow: hidden;">
+                    <div style="display: flex; justify-content: center;">
+                        <h3>Similar Products</h3>
+                    </div>
+
+                    <div class="scrollable-div">
+                        {%for items in recommended_items%}
+                        
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{{items.product_image.url}}" alt="{{items.product_name}}">
+                            </div>
+                            <div class="product_details" style="display: flex; justify-content: center;">
+                                <button type="button">
+                                    Show More
+                                </button>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            const slides = document.querySelectorAll('.slides img');
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            slides.forEach((slide) => {
+                slide.style.display = 'none';
+            });
+            slides[slideIndex].style.display = 'block';
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlides();
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlides();
+        }
+
+        // Initially show the first slide
+        showSlides();
+        // side-panel-cart
+        const openBtn = document.getElementById('openBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sidePanel = document.getElementById('sidePanel');
+        const overlay = document.getElementById('overlay');
+
+        openBtn.addEventListener('click', function () {
+            sidePanel.classList.add('show-panel');
+            overlay.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', function () {
+            sidePanel.classList.remove('show-panel');
+            overlay.style.display = 'none';
+        });
+        // quantity-add-or-delete
+        const quantityInput = document.querySelector('.quantity-input');
+        const addBtn = document.querySelector('.add-btn');
+        const subtractBtn = document.querySelector('.subtract-btn');
+
+        addBtn.addEventListener('click', function () {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+
+        subtractBtn.addEventListener('click', function () {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+    </script>
+</body>
+{% endblock %}
+</html>

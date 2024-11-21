@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'Home/index.html' %}
+{% block body_block %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Grid</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/generalStyle.css' %}">
+</head>
+<body>
+    {% for cat in category%}
+    <div class="conatiner">
+        <div class="free-space">
+            <h1>{{cat}}</h1>
+        </div>
+        
+        <div class="product-container">
+            <div class="product-grid-container">
+                {% for item in items %}
+                {% if item.product_type == cat %}
+                <div class="product-grid-item"> <!-- card -->
+                    <div class="product-image">
+                        <a href="{% url 'products:detail' item.product_id%}"><img src="{{item.product_image.url}}"></a>
+                    </div>
+                    <div class="product-name">
+                        <h3>{{item.product_name}}</h3>
+                    </div>
+                    <div class="product-name">
+                        <h3>{{item.product_price}} Rs/-</h3>
+                    </div>
+                    <div class="product-options">
+                        <button>Wishlist</button>
+                        <button>Add To Cart</button>
+                    </div>
+                    <div class="ratings-space">
+                        <div class="ratings">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9734;</span>
+                            <span class="rating-text">4.0 (24 reviews)</span>
+                        </div>
+
+                    </div>
+                </div>
+                {%endif%}
+                {% endfor %}
+    
+            </div>    
+        </div>    
+    </div>    
+    {%endfor%}
+</body>
+{% endblock %}
+    <footer>
+        <div class="foot-panel1">
+            <button>Back to Top</button>
+        </div>
+        <div class="foot-panel2">
+            <div>
+                <p><b>Get to Know Us</b></p>
+                <a>Careers</a>
+                <br>
+                <a>Blog</a>
+                <br>
+                <a>About Craft of Bengal</a>
+            </div>
+            <div>
+                <p><b>Make Money with Us</b></p>
+                <a>Sell products on Craft of Bengal </a>
+                <br>
+                <a>Advertise Your Products</a>
+                <br>
+                <a>Self-Publish with Us</a>
+                <br>
+                <a>See More Make Money with Us</a>
+            </div>
+            <div>
+                <p><b>Craft of Bengal Business Card</b></p>
+                <a>Shop with Points</a>
+                <br>
+                <a>Reload Your Balance</a>
+            </div>
+            <div>
+                <p><b>Let Us Help You</b></p>
+                <a>Your Account</a>
+                <br>
+                <a>Your Order</a>
+                <br>
+                <a>Shipping Rates & Policies </a>
+                <br>
+                <a>Return & Replacements</a>
+                <br>
+                <a>Manage Your Content and Devices</a>
+                <br>
+                <a>Craft of Bengal Assistant</a>
+                <br>
+                <a>Help</a>
+            </div>
+        </div>
+        <div class="foot-panel3">
+            <div class="pages">
+                <a>Conditions of Use</a>
+                <a>Privacy Notice</a>
+                <a>Your Ads Privacy Choices</a>
+            </div>
+            <div class="copyright">
+                &copy; 1996-2023, Craft_of_Bengal.com, Inc. or its affiliates
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../generalScript.js"></script>
+    <!--  -->
+</body>
+
+</html>
