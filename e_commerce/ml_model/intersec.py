@@ -1,16 +1,18 @@
 import pickle
+from  . import Matrix
+from . import Item
 
-# Load the Item Based recommendations list
-with open('ml_model\ItemBase.pkl', 'rb') as file:
-    item_based_results = pickle.load(file)
 
 # Load the Matrix Factorization recommendations list
-with open('ml_model\MatFac.pkl', 'rb') as file:
-    matrix_factorization_results = pickle.load(file)
+# with open('ml_model\MatFac.pkl', 'rb') as file:
+#     matrix_factorization_results = pickle.load(file)
 
-def load_model_results():
+def load_model_results(name="Teracotta 1"):
     # Find the intersection of the two lists
-    intersection_items = list(set(item_based_results) & set(matrix_factorization_results))
+    matrix_factorization_results = Matrix.matrix_factorization_recommendations(name)
+    item_based_results = Item.item_based_recommendations(name)
+    
+    intersection_items = list(set(matrix_factorization_results+item_based_results))
     
     # Print the intersection items to the console
     print("Intersection of Recommended Items:", intersection_items)
@@ -18,4 +20,3 @@ def load_model_results():
     return intersection_items
 
 # Call the function and print the result
-load_model_results()

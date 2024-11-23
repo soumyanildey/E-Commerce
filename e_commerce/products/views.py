@@ -112,6 +112,10 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
       context = super(ProductDetailView, self).get_context_data(**kwargs)
-      recommended_products=intersec.load_model_results()
+      current_product = self.get_object()  # This is the product object for the current page
+        
+        # Get the product name of the current item
+      current_product_name = current_product.product_name
+      recommended_products=intersec.load_model_results(current_product_name)
       context['recommended_items'] = models.Products.objects.filter(product_name__in=recommended_products)
       return context
