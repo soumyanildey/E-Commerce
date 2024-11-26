@@ -12,6 +12,8 @@ class UserProfile(models.Model):
              ('O','Others'))
     gender=models.CharField(choices=choices,max_length=20)
 
+
+
     def __str__(self):
         return self.user.username
 

@@ -115,7 +115,22 @@ class ProductDetailView(DetailView):
       current_product = self.get_object()  # This is the product object for the current page
         
         # Get the product name of the current item
-      current_product_name = current_product.product_name
-      recommended_products=intersec.load_model_results(current_product_name)
-      context['recommended_items'] = models.Products.objects.filter(product_name__in=recommended_products)
+      current_product_name = getattr(current_product, 'product_name', None)
+      print(current_product_name)
+      if current_product_name is None:
+            # Handle missing product_name gracefully
+            context['recommended_items'] = []
+            return context
+      
+      try:
+            recommended_products = intersec.load_model_results(current_product_name)
+            # print(f"Recommended products for '{current_product_name}': {recommended_products}")
+            context['recommended_items'] = models.Products.objects.filter(
+                product_name__in=recommended_products
+            )
+      except Exception as e:
+            # Handle errors in recommendation logic gracefully
+            print(f"Error loading recommended products: {e}")
+            context['recommended_items'] = []
+        
       return context

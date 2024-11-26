@@ -2,6 +2,7 @@
 <html lang="en">
 {% extends 'Home/index.html' %}
 {% block body_block %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
 </head>
 
 <body>
-    
+
     <div class="main_container">
         <div class="sub_container">
             <div class="product_image">
@@ -34,7 +35,7 @@
             <div class="product_details">
 
                 <div class="product_name" style="padding: 10px;">
-                    <h6>Home / {{products.product_type}} / {{products.product_name}}</h6>
+                    <h4>Home / {{products.product_type}} / {{products.product_name}}</h6>
                     <h2>{{products.product_name}}</h2>
                     <h3>₹ {{products.product_price}}</h3>
                 </div>
@@ -50,7 +51,8 @@
                         <a href="yourcart.html"><button type="button">Buy Now</button></a>
                     </div>
                     <div class="add_to_cart_button">
-                        <button type="button" id="openBtn">Add</button>
+                        <a href="{% url 'cart:add_to_cart' products.product_id %}"><button
+                                type="button">Add</button></a>
                     </div>
 
                     <div class="side-panel" id="sidePanel">
@@ -231,27 +233,24 @@
             <div class="similar-products-list">
                 <div class="similar-products-container" style="overflow: hidden;">
                     <div style="display: flex; justify-content: center;">
-                        <h3>Similar Products</h3>
+                        <h3>Frequently Bought Together</h3>
                     </div>
 
                     <div class="scrollable-div">
                         {%for items in recommended_items%}
-                        
+
                         <div class="card">
                             <div class="card-image">
-                                <img src="{{items.product_image.url}}" alt="{{items.product_name}}">
+                                <a href="{% url 'products:detail' items.product_id%}"><img
+                                        src="{{items.product_image.url}}"></a>
                             </div>
-                            <div class="product_details" style="display: flex; justify-content: center;">
-                                <button type="button">
-                                    Show More
-                                </button>
-                            </div>
+
                         </div>
                         {%endfor%}
-                    
-                        
-                        
-                        
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -322,4 +321,5 @@
     </script>
 </body>
 {% endblock %}
+
 </html>
