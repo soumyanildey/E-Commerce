@@ -25,5 +25,23 @@ def add_to_cart(request,product_id):
     product=Products.objects.get(product_id=product_id)
     user=get_object_or_404(UserProfile,user=request.user)
     cart_item,created=Cart.objects.get_or_create(product=product,user=user)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+    return redirect('products:detail', pk=product.product_id)
+
+def increase_quantity(request, product_id):
+    cart_item=Cart.objects.get(id=product_id)
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('cart:cart')
+
+def decrease_quantity(request, product_id):
+    cart_item=Cart.objects.get(id=product_id)
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
     return redirect('cart:cart')
     

@@ -9,6 +9,19 @@
     {%load static%}
     <link rel="stylesheet" href="{% static 'css/product_details_style.css'%}">
     <title>Product Name</title>
+    <style>
+        .rating{
+            background-color: green;
+            color: white;
+            padding: 10px;
+            
+            border-radius: 20px;
+        }
+
+        p{
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,16 +48,13 @@
             <div class="product_details">
 
                 <div class="product_name" style="padding: 10px;">
-                    <h4>Home / {{products.product_type}} / {{products.product_name}}</h6>
-                    <h2>{{products.product_name}}</h2>
-                    <h3>₹ {{products.product_price}}</h3>
+                    <p><h2>Home / {{products.product_type}} / {{products.product_name}}</h2></p>
+                        <p><p><h2>{{products.product_name}}</h2></p>
+                            <p><h2><span class="rating">{{rating}}</span> {{rating_count}} Ratings & {{review_count}} Reviews</h2></p>
+                                <p><h2>₹ {{products.product_price}}</h2></p>
                 </div>
-                <div class="product_description" style="padding: 10px;">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo numquam laborum placeat ratione
-                        eligendi, vero fuga unde praesentium odit eveniet. Laudantium consectetur architecto eligendi
-                        cumque
-                        nemo tempora beatae, fuga explicabo.
-                    </p>
+                <div class="product_description" style="padding: 10px; width: 75%;">
+                    <p>{{products.product_description}}</p>
                 </div>
                 <div class="buttons" style="display: flex;">
                     <div class="buy_now_button" id="button_on_page">
@@ -151,84 +161,7 @@
 
                     <div class="overlay" id="overlay"></div>
                 </div>
-                <div class="review-container">
-                    <div class="review-sub-container">
-                        <div class="scrollable-div">
-                            <div class="review">
-                                <h3>User 1 Review</h3>
-                                <div class="user-comment">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
-                                        magna mollis."</p>
-                                    <div class="rating">
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9734;</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review">
-                                <h3>User 2 Review</h3>
-                                <div class="user-comment">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
-                                        magna mollis."</p>
-                                    <div class="rating">
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9734;</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review">
-                                <h3>User 3 Review</h3>
-                                <div class="user-comment">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
-                                        magna mollis."</p>
-                                    <div class="rating">
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9734;</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review">
-                                <h3>User 4 Review</h3>
-                                <div class="user-comment">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
-                                        magna mollis."</p>
-                                    <div class="rating">
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9734;</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review">
-                                <h3>User 5 Review</h3>
-                                <div class="user-comment">
-                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis velit id
-                                        magna mollis."</p>
-                                    <div class="rating">
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9733;</span>
-                                        <span class="star">&#9734;</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
+                
             </div>
             <div class="similar-products-list">
                 <div class="similar-products-container" style="overflow: hidden;">

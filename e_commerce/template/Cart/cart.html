@@ -107,7 +107,7 @@
                     </td>
 
                     <td><strong>{{item.product.product_name}}</strong></td>
-                    <td><strong>{{item.quantity}}</strong></td>
+                    <td>  <a href="{%url 'cart:increase_quantity' item.id%}"><i class="fa-solid fa-plus"></i> </a>   <strong> {{item.quantity}} </strong>    <a href="{%url 'cart:decrease_quantity' item.id%}"> <i class="fa-solid fa-minus"></i>  </a></td>
                     <td><strong>{{item.get_unit_price}}</strong></td>
                     <td><strong>{{item.get_total_price}}</strong></td>
                     <td><a href="{% url 'cart:remove_from_cart' item.id %}"><button type="button"

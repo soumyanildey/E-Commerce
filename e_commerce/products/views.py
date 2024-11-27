@@ -107,7 +107,7 @@ class TeracottaView(ListView):
 class ProductDetailView(DetailView):
     model=models.Products
     template_name='Product/product_details.html'
-    queryset = models.Products.objects.all()
+    
     lookup_field = 'pk'
 
     def get_context_data(self, **kwargs):
@@ -116,6 +116,7 @@ class ProductDetailView(DetailView):
         
         # Get the product name of the current item
       current_product_name = getattr(current_product, 'product_name', None)
+      current_product_id = getattr(current_product, 'product_id', None)
       print(current_product_name)
       if current_product_name is None:
             # Handle missing product_name gracefully
@@ -132,5 +133,9 @@ class ProductDetailView(DetailView):
             # Handle errors in recommendation logic gracefully
             print(f"Error loading recommended products: {e}")
             context['recommended_items'] = []
-        
+
+
+      context['rating']=(models.Rating.get_avg_rating(current_product))
+      context['rating_count']=models.Rating.get_rating_count(current_product)
+      context['review_count']=models.Review.get_review_count(current_product)
       return context
